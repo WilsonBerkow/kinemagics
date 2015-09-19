@@ -84,7 +84,7 @@
 (defn fill-style! [ctx val]
   (set! (.-fillStyle ctx) val))
 
-(defn stroke-style [ctx val]
+(defn stroke-style! [ctx val]
   (set! (.-strokeStyle ctx) val))
 
 (defn line-width! [ctx val]
@@ -125,6 +125,7 @@
 
 (defn setup-graph! [ctx ctx-mid ctx-front y-label title]
   (translate! ctx 0 gheight)
+  (stroke-style! ctx-mid "darkblue")
   (translate! ctx-mid 0 gheight)
   (fill-style! ctx-front "red")
   (translate! ctx-front 0 gheight)

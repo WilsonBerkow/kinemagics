@@ -92,7 +92,7 @@ return ctx.restore();
 kinemagics.canvas_util.fill_style_BANG_ = (function kinemagics$canvas_util$fill_style_BANG_(ctx,val){
 return ctx.fillStyle = val;
 });
-kinemagics.canvas_util.stroke_style = (function kinemagics$canvas_util$stroke_style(ctx,val){
+kinemagics.canvas_util.stroke_style_BANG_ = (function kinemagics$canvas_util$stroke_style_BANG_(ctx,val){
 return ctx.strokeStyle = val;
 });
 kinemagics.canvas_util.line_width_BANG_ = (function kinemagics$canvas_util$line_width_BANG_(ctx,val){
@@ -125,6 +125,8 @@ kinemagics.canvas_util.gwidth = (kinemagics.canvas_util.graphs_width - (20));
 kinemagics.canvas_util.gheight = ((kinemagics.canvas_util.graphs_height - (20)) / (2));
 kinemagics.canvas_util.setup_graph_BANG_ = (function kinemagics$canvas_util$setup_graph_BANG_(ctx,ctx_mid,ctx_front,y_label,title){
 kinemagics.canvas_util.translate_BANG_.call(null,ctx,(0),kinemagics.canvas_util.gheight);
+
+kinemagics.canvas_util.stroke_style_BANG_.call(null,ctx_mid,"darkblue");
 
 kinemagics.canvas_util.translate_BANG_.call(null,ctx_mid,(0),kinemagics.canvas_util.gheight);
 
