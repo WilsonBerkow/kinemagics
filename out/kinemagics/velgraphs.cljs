@@ -18,19 +18,19 @@
         ))
 
 (def wkst-graph-16
-  (list [0 0]
-        [1000 1]
-        
-        [2000 1]
-        
-        [3000 2]
-        
-        [4000 2]
-        
-        [5000 3]
-        [6000 3]
-        
-        ))
+  (let [vel0 0.7
+        vel1 1.4
+        vel2 2.1
+        vel3 2.8]
+    (list [0 0]
+          [1000 vel0]
+          [2250 vel0]
+          
+          [3250 vel1]
+          [4500 vel1]
+          
+          [5500 vel2]
+          [6750 vel2])))
 
 (defn singleton? [L]
   (and (not (empty? L)) (empty? (rest L))))
