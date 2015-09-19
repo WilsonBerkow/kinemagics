@@ -24,6 +24,10 @@ return kinemagics.canvas_util.get_canv_height.call(null,ctx.canvas);
 kinemagics.canvas_util.canvas = kinemagics.canvas_util.by_id.call(null,"canvas");
 kinemagics.canvas_util.width = kinemagics.canvas_util.get_canv_width.call(null,kinemagics.canvas_util.canvas);
 kinemagics.canvas_util.height = kinemagics.canvas_util.get_canv_height.call(null,kinemagics.canvas_util.canvas);
+kinemagics.canvas_util.wkst_presets_pulldown = kinemagics.canvas_util.by_id.call(null,"presets-pulldown");
+kinemagics.canvas_util.get_picked_graph = (function kinemagics$canvas_util$get_picked_graph(){
+return kinemagics.canvas_util.wkst_presets_pulldown.value;
+});
 kinemagics.canvas_util.x_pos = (function kinemagics$canvas_util$x_pos(ctx,x){
 return (x + (10));
 });
@@ -162,6 +166,22 @@ kinemagics.canvas_util.setup_graph_BANG_.call(null,kinemagics.canvas_util.v_grap
 
 return kinemagics.canvas_util.setup_graph_BANG_.call(null,kinemagics.canvas_util.a_graph,kinemagics.canvas_util.a_graph_mid,kinemagics.canvas_util.a_graph_front,"a","Acceleration");
 });
+kinemagics.canvas_util.clear_graph_layer_BANG_ = (function kinemagics$canvas_util$clear_graph_layer_BANG_(ctx){
+return kinemagics.canvas_util.clear_rect_BANG_.call(null,ctx,(-10),kinemagics.canvas_util.gheight,((2) * kinemagics.canvas_util.graphs_width),((2) * kinemagics.canvas_util.graphs_height));
+});
+kinemagics.canvas_util.clear_all_graph_points_BANG_ = (function kinemagics$canvas_util$clear_all_graph_points_BANG_(){
+kinemagics.canvas_util.clear_graph_layer_BANG_.call(null,kinemagics.canvas_util.d_graph_mid);
+
+kinemagics.canvas_util.clear_graph_layer_BANG_.call(null,kinemagics.canvas_util.d_graph_front);
+
+kinemagics.canvas_util.clear_graph_layer_BANG_.call(null,kinemagics.canvas_util.v_graph_mid);
+
+kinemagics.canvas_util.clear_graph_layer_BANG_.call(null,kinemagics.canvas_util.v_graph_front);
+
+kinemagics.canvas_util.clear_graph_layer_BANG_.call(null,kinemagics.canvas_util.a_graph_mid);
+
+return kinemagics.canvas_util.clear_graph_layer_BANG_.call(null,kinemagics.canvas_util.a_graph_front);
+});
 kinemagics.canvas_util.point_BANG_ = (function kinemagics$canvas_util$point_BANG_(ctx,x,y,r){
 kinemagics.canvas_util.begin_BANG_.call(null,ctx);
 
@@ -174,7 +194,7 @@ var x = (time * (kinemagics.canvas_util.gwidth / (kinemagics.canvas_util.width /
 var y = (mag * (kinemagics.canvas_util.gheight / kinemagics.canvas_util.height));
 var prev_x = (prev_time * (kinemagics.canvas_util.gwidth / (kinemagics.canvas_util.width / kinemagics.config.main_graph_t_scale)));
 var prev_y = (prev_mag * (kinemagics.canvas_util.gheight / kinemagics.canvas_util.height));
-kinemagics.canvas_util.clear_rect_BANG_.call(null,ctx_front,(-10),kinemagics.canvas_util.gheight,((2) * kinemagics.canvas_util.graphs_width),((2) * kinemagics.canvas_util.graphs_height));
+kinemagics.canvas_util.clear_graph_layer_BANG_.call(null,ctx_front);
 
 kinemagics.canvas_util.point_BANG_.call(null,ctx_front,x,y,(3));
 

@@ -1,9 +1,11 @@
 // Compiled by ClojureScript 1.7.48 {}
 goog.provide('kinemagics.velgraphs');
 goog.require('cljs.core');
+goog.require('kinemagics.canvas_util');
 kinemagics.velgraphs.wkst_graph_13 = cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core.List.EMPTY,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(5000),(3)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(3)], null));
 kinemagics.velgraphs.wkst_graph_14 = cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core.List.EMPTY,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(5000),(-4)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(4)], null));
 kinemagics.velgraphs.wkst_graph_15 = cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core.List.EMPTY,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(((((1800) + (250)) + (2400)) + (250)) + (3000)),(-3)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [((((250) + (2400)) + (250)) + (3000)),(3)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(((2400) + (250)) + (3000)),(-4)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [((250) + (3000)),(4)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(3000),(-5)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(5)], null));
+kinemagics.velgraphs.wkst_graph_16 = cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core._conj.call(null,cljs.core.List.EMPTY,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(6000),(3)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(5000),(3)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(4000),(2)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(3000),(2)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(2000),(1)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(1000),(1)], null)),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(0)], null));
 kinemagics.velgraphs.singleton_QMARK_ = (function kinemagics$velgraphs$singleton_QMARK_(L){
 return (!(cljs.core.empty_QMARK_.call(null,L))) && (cljs.core.empty_QMARK_.call(null,cljs.core.rest.call(null,L)));
 });
@@ -37,8 +39,8 @@ return kinemagics$velgraphs$vel_from_intervals.call(null,t,cljs.core.rest.call(n
 return null;
 }
 });
-kinemagics.velgraphs.vel_from_time = (function kinemagics$velgraphs$vel_from_time(t){
-return kinemagics.velgraphs.vel_from_intervals.call(null,t,kinemagics.velgraphs.wkst_graph_15);
+kinemagics.velgraphs.vel_from_time = (function kinemagics$velgraphs$vel_from_time(t,graph_to_use){
+return kinemagics.velgraphs.vel_from_intervals.call(null,t,((cljs.core._EQ_.call(null,graph_to_use,"13"))?kinemagics.velgraphs.wkst_graph_13:((cljs.core._EQ_.call(null,graph_to_use,"14"))?kinemagics.velgraphs.wkst_graph_14:((cljs.core._EQ_.call(null,graph_to_use,"15"))?kinemagics.velgraphs.wkst_graph_15:kinemagics.velgraphs.wkst_graph_16))));
 });
 
 //# sourceMappingURL=velgraphs.js.map

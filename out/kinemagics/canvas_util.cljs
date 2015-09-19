@@ -14,6 +14,10 @@
 (def width (get-canv-width canvas))
 (def height (get-canv-height canvas))
 
+(def wkst-presets-pulldown (by-id "presets-pulldown"))
+(defn get-picked-graph []
+  (.-value wkst-presets-pulldown))
+
 (defn x-pos [ctx x]
   (+ x 10))
 (defn y-pos [ctx y]
@@ -152,6 +156,17 @@
   (setup-graph! v-graph v-graph-mid v-graph-front "v" "Velocity")
   (setup-graph! a-graph a-graph-mid a-graph-front "a" "Acceleration"))
 
+(defn clear-graph-layer! [ctx]
+  (clear-rect! ctx -10 gheight (* 2 graphs-width) (* 2 graphs-height)))
+
+(defn clear-all-graph-points! []
+  (clear-graph-layer! d-graph-mid)
+  (clear-graph-layer! d-graph-front)
+  (clear-graph-layer! v-graph-mid)
+  (clear-graph-layer! v-graph-front)
+  (clear-graph-layer! a-graph-mid)
+  (clear-graph-layer! a-graph-front))
+
 (defn point! [ctx x y r]
   (begin! ctx)
   (circle! ctx x y r)
@@ -162,7 +177,7 @@
         y (* mag (/ gheight height))
         prev-x (* prev-time (/ gwidth (/ width config/main-graph-t-scale)))
         prev-y (* prev-mag (/ gheight height))]
-    (clear-rect! ctx-front -10 gheight (* 2 graphs-width) (* 2 graphs-height))
+    (clear-graph-layer! ctx-front)
     (point! ctx-front x y 3)
     (point! ctx-mid prev-x prev-y 1)
     ))

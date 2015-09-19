@@ -1,9 +1,9 @@
 goog.addDependency("base.js", ['goog'], []);
 goog.addDependency("../cljs/core.js", ['cljs.core'], ['goog.string', 'goog.object', 'goog.string.StringBuffer', 'goog.array']);
 goog.addDependency("../kinemagics/config.js", ['kinemagics.config'], ['cljs.core']);
-goog.addDependency("../kinemagics/runloop.js", ['kinemagics.runloop'], ['cljs.core']);
 goog.addDependency("../kinemagics/canvas_util.js", ['kinemagics.canvas_util'], ['kinemagics.config', 'cljs.core']);
-goog.addDependency("../kinemagics/velgraphs.js", ['kinemagics.velgraphs'], ['cljs.core']);
+goog.addDependency("../kinemagics/runloop.js", ['kinemagics.runloop'], ['cljs.core']);
+goog.addDependency("../kinemagics/velgraphs.js", ['kinemagics.velgraphs'], ['cljs.core', 'kinemagics.canvas_util']);
 goog.addDependency("../kinemagics/layout.js", ['kinemagics.layout'], ['kinemagics.config', 'cljs.core', 'kinemagics.canvas_util', 'kinemagics.runloop', 'kinemagics.velgraphs']);
 goog.addDependency("../clojure/browser/event.js", ['clojure.browser.event'], ['cljs.core', 'goog.events.EventTarget', 'goog.events.EventType', 'goog.events']);
 goog.addDependency("../clojure/browser/net.js", ['clojure.browser.net'], ['goog.net.xpc.CfgFields', 'goog.net.XhrIo', 'goog.json', 'goog.Uri', 'cljs.core', 'goog.net.EventType', 'goog.net.xpc.CrossPageChannel', 'goog.net.WebSocket', 'clojure.browser.event']);

@@ -13,25 +13,34 @@
    :t 0
    :vel 0
    :dv 0
-   :prev {:d 0 :t 0 :dv 0 :vel 0}})
+   :prev {:d 0 :t 0 :dv 0 :vel 0}
+   :graph-used "15"})
 
 (defn step-state [dt state]
-  (let [t (:t state)
+  (let [cur-used-graph (:graph-used state)
+        t (:t state)
         d (:d state)
-        new-vel (velgraphs/vel-from-time t)
+        new-vel (velgraphs/vel-from-time t cur-used-graph) ;; As all will be reset on graph change, no point in using new-picked-graph here
         dv (- new-vel (:vel state))
-        prev {:d d :t t :dv (:dv state) :vel (:vel state)}]
-    (if (nil? new-vel)
-      {:d 0 ;; If vel-from-time returns nil,
-       :t 0 ;; it means the intervals have run,
-       :vel new-vel ;; so start from beginning.
+        new-picked-graph (c/get-picked-graph)
+        prev {:d d :t t :dv (:dv state) :vel (:vel state) :graph-used cur-used-graph}]
+    (if (or (nil? new-vel) (not (= new-picked-graph cur-used-graph)))
+      ;; If vel-from-time returns nil, it means the intervals have run.
+      ;; If the current picked graph is different from the one before,
+      ;; the path has been switched. In either case, start from beginning.
+      {:d 0
+       :t 0
+       :vel new-vel
        :dv 0
-       :prev prev}
-      {:d (+ d (velgraphs/vel-from-time t))
-       :t (+ t 30) ;; If I added `dt`, the graphs would get screwed up from the variation
+       :prev prev
+       :graph-used new-picked-graph}
+      ;; Otherwise, update state
+      {:d (+ d (velgraphs/vel-from-time t new-picked-graph))
+       :t (+ t 30) ;; If `dt` were added, the graphs would get screwed up from the variation
        :vel new-vel
        :dv dv
-       :prev prev})))
+       :prev prev
+       :graph-used new-picked-graph})))
 
 (def ctx (c/get-ctx c/canvas))
 
@@ -54,6 +63,8 @@
        prev-vel (* 50 (:vel (:prev state)))
        dv (* 500 (:dv state))
        prev-dv (* 500 (:dv (:prev state)))]
+   (if (not (= (:graph-used state) (:graph-used (:prev state))))
+     (c/clear-all-graph-points!))
    (c/draw-graph-point! c/d-graph-mid c/d-graph-front t d prev-t prev-d)
    (c/draw-graph-point! c/v-graph-mid c/v-graph-front t vel prev-t prev-vel)
    (c/draw-graph-point! c/a-graph-mid c/a-graph-front t dv prev-t prev-dv)))

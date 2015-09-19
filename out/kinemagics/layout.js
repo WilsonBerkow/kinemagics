@@ -7,17 +7,19 @@ goog.require('kinemagics.velgraphs');
 goog.require('kinemagics.config');
 kinemagics.layout.fps = (40);
 kinemagics.layout.framelength = ((1000) / kinemagics.layout.fps);
-kinemagics.layout.init_state = new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"d","d",1972142424),(0),new cljs.core.Keyword(null,"t","t",-1397832519),(0),new cljs.core.Keyword(null,"vel","vel",-110770822),(0),new cljs.core.Keyword(null,"dv","dv",781315158),(0),new cljs.core.Keyword(null,"prev","prev",-1597069226),new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"d","d",1972142424),(0),new cljs.core.Keyword(null,"t","t",-1397832519),(0),new cljs.core.Keyword(null,"dv","dv",781315158),(0),new cljs.core.Keyword(null,"vel","vel",-110770822),(0)], null)], null);
+kinemagics.layout.init_state = new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"d","d",1972142424),(0),new cljs.core.Keyword(null,"t","t",-1397832519),(0),new cljs.core.Keyword(null,"vel","vel",-110770822),(0),new cljs.core.Keyword(null,"dv","dv",781315158),(0),new cljs.core.Keyword(null,"prev","prev",-1597069226),new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"d","d",1972142424),(0),new cljs.core.Keyword(null,"t","t",-1397832519),(0),new cljs.core.Keyword(null,"dv","dv",781315158),(0),new cljs.core.Keyword(null,"vel","vel",-110770822),(0)], null),new cljs.core.Keyword(null,"graph-used","graph-used",-1689796065),"15"], null);
 kinemagics.layout.step_state = (function kinemagics$layout$step_state(dt,state){
+var cur_used_graph = new cljs.core.Keyword(null,"graph-used","graph-used",-1689796065).cljs$core$IFn$_invoke$arity$1(state);
 var t = new cljs.core.Keyword(null,"t","t",-1397832519).cljs$core$IFn$_invoke$arity$1(state);
 var d = new cljs.core.Keyword(null,"d","d",1972142424).cljs$core$IFn$_invoke$arity$1(state);
-var new_vel = kinemagics.velgraphs.vel_from_time.call(null,t);
+var new_vel = kinemagics.velgraphs.vel_from_time.call(null,t,cur_used_graph);
 var dv = (new_vel - new cljs.core.Keyword(null,"vel","vel",-110770822).cljs$core$IFn$_invoke$arity$1(state));
-var prev = new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"d","d",1972142424),d,new cljs.core.Keyword(null,"t","t",-1397832519),t,new cljs.core.Keyword(null,"dv","dv",781315158),new cljs.core.Keyword(null,"dv","dv",781315158).cljs$core$IFn$_invoke$arity$1(state),new cljs.core.Keyword(null,"vel","vel",-110770822),new cljs.core.Keyword(null,"vel","vel",-110770822).cljs$core$IFn$_invoke$arity$1(state)], null);
-if((new_vel == null)){
-return new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"d","d",1972142424),(0),new cljs.core.Keyword(null,"t","t",-1397832519),(0),new cljs.core.Keyword(null,"vel","vel",-110770822),new_vel,new cljs.core.Keyword(null,"dv","dv",781315158),(0),new cljs.core.Keyword(null,"prev","prev",-1597069226),prev], null);
+var new_picked_graph = kinemagics.canvas_util.get_picked_graph.call(null);
+var prev = new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"d","d",1972142424),d,new cljs.core.Keyword(null,"t","t",-1397832519),t,new cljs.core.Keyword(null,"dv","dv",781315158),new cljs.core.Keyword(null,"dv","dv",781315158).cljs$core$IFn$_invoke$arity$1(state),new cljs.core.Keyword(null,"vel","vel",-110770822),new cljs.core.Keyword(null,"vel","vel",-110770822).cljs$core$IFn$_invoke$arity$1(state),new cljs.core.Keyword(null,"graph-used","graph-used",-1689796065),cur_used_graph], null);
+if(((new_vel == null)) || (!(cljs.core._EQ_.call(null,new_picked_graph,cur_used_graph)))){
+return new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"d","d",1972142424),(0),new cljs.core.Keyword(null,"t","t",-1397832519),(0),new cljs.core.Keyword(null,"vel","vel",-110770822),new_vel,new cljs.core.Keyword(null,"dv","dv",781315158),(0),new cljs.core.Keyword(null,"prev","prev",-1597069226),prev,new cljs.core.Keyword(null,"graph-used","graph-used",-1689796065),new_picked_graph], null);
 } else {
-return new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"d","d",1972142424),(d + kinemagics.velgraphs.vel_from_time.call(null,t)),new cljs.core.Keyword(null,"t","t",-1397832519),(t + (30)),new cljs.core.Keyword(null,"vel","vel",-110770822),new_vel,new cljs.core.Keyword(null,"dv","dv",781315158),dv,new cljs.core.Keyword(null,"prev","prev",-1597069226),prev], null);
+return new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"d","d",1972142424),(d + kinemagics.velgraphs.vel_from_time.call(null,t,new_picked_graph)),new cljs.core.Keyword(null,"t","t",-1397832519),(t + (30)),new cljs.core.Keyword(null,"vel","vel",-110770822),new_vel,new cljs.core.Keyword(null,"dv","dv",781315158),dv,new cljs.core.Keyword(null,"prev","prev",-1597069226),prev,new cljs.core.Keyword(null,"graph-used","graph-used",-1689796065),new_picked_graph], null);
 }
 });
 kinemagics.layout.ctx = kinemagics.canvas_util.get_ctx.call(null,kinemagics.canvas_util.canvas);
@@ -41,6 +43,11 @@ var vel = ((50) * new cljs.core.Keyword(null,"vel","vel",-110770822).cljs$core$I
 var prev_vel = ((50) * new cljs.core.Keyword(null,"vel","vel",-110770822).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"prev","prev",-1597069226).cljs$core$IFn$_invoke$arity$1(state)));
 var dv = ((500) * new cljs.core.Keyword(null,"dv","dv",781315158).cljs$core$IFn$_invoke$arity$1(state));
 var prev_dv = ((500) * new cljs.core.Keyword(null,"dv","dv",781315158).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"prev","prev",-1597069226).cljs$core$IFn$_invoke$arity$1(state)));
+if(!(cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"graph-used","graph-used",-1689796065).cljs$core$IFn$_invoke$arity$1(state),new cljs.core.Keyword(null,"graph-used","graph-used",-1689796065).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"prev","prev",-1597069226).cljs$core$IFn$_invoke$arity$1(state))))){
+kinemagics.canvas_util.clear_all_graph_points_BANG_.call(null);
+} else {
+}
+
 kinemagics.canvas_util.draw_graph_point_BANG_.call(null,kinemagics.canvas_util.d_graph_mid,kinemagics.canvas_util.d_graph_front,t,d,prev_t,prev_d);
 
 kinemagics.canvas_util.draw_graph_point_BANG_.call(null,kinemagics.canvas_util.v_graph_mid,kinemagics.canvas_util.v_graph_front,t,vel,prev_t,prev_vel);

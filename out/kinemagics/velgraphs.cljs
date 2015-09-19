@@ -1,4 +1,5 @@
-(ns kinemagics.velgraphs)
+(ns kinemagics.velgraphs
+  (:require [kinemagics.canvas-util :as c]))
 
 (def wkst-graph-13
  (list [0 3] [5000 3]))
@@ -14,6 +15,21 @@
         [(+ 2400 250 3000) -4]
         [(+ 250 2400 250 3000) 3]
         [(+ 1800 250 2400 250 3000) -3]
+        ))
+
+(def wkst-graph-16
+  (list [0 0]
+        [1000 1]
+        
+        [2000 1]
+        
+        [3000 2]
+        
+        [4000 2]
+        
+        [5000 3]
+        [6000 3]
+        
         ))
 
 (defn singleton? [L]
@@ -48,8 +64,15 @@
     nil ;; In this case, the graph has run to its end, and the animation should restart
     ))
 
-(defn vel-from-time [t]
-  (vel-from-intervals t wkst-graph-15))
+(defn vel-from-time [t graph-to-use]
+  (vel-from-intervals t
+    (if (= graph-to-use "13")
+      wkst-graph-13
+      (if (= graph-to-use "14")
+        wkst-graph-14
+        (if (= graph-to-use "15")
+          wkst-graph-15
+          wkst-graph-16)))))
 
 
 
