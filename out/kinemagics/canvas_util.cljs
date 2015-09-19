@@ -129,6 +129,7 @@
   (fill-style! ctx-front "red")
   (translate! ctx-front 0 gheight)
   (begin! ctx)
+  (move-to! ctx 0 (+ gheight 5))
   (triangle! ctx
              0 gheight
              2 (- gheight 5)
@@ -136,9 +137,9 @@
   (move-to! ctx 0 (- gheight 5))
   (line-to! ctx 0 (- (- gheight) 5))
   (triangle! ctx
-             0 (- gheight)
-             -2 (- (- gheight) 5)
-             2 (- (- gheight) 5))
+             0 (- (- gheight) 5)
+             -2 (- gheight)
+             2 (- gheight))
   (move-to! ctx 0 0)
   (line-to! ctx gwidth 0)
   (triangle! ctx

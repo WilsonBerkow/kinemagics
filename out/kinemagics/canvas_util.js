@@ -134,13 +134,15 @@ kinemagics.canvas_util.translate_BANG_.call(null,ctx_front,(0),kinemagics.canvas
 
 kinemagics.canvas_util.begin_BANG_.call(null,ctx);
 
+kinemagics.canvas_util.move_to_BANG_.call(null,ctx,(0),(kinemagics.canvas_util.gheight + (5)));
+
 kinemagics.canvas_util.triangle_BANG_.call(null,ctx,(0),kinemagics.canvas_util.gheight,(2),(kinemagics.canvas_util.gheight - (5)),(-2),(kinemagics.canvas_util.gheight - (5)));
 
 kinemagics.canvas_util.move_to_BANG_.call(null,ctx,(0),(kinemagics.canvas_util.gheight - (5)));
 
 kinemagics.canvas_util.line_to_BANG_.call(null,ctx,(0),((- kinemagics.canvas_util.gheight) - (5)));
 
-kinemagics.canvas_util.triangle_BANG_.call(null,ctx,(0),(- kinemagics.canvas_util.gheight),(-2),((- kinemagics.canvas_util.gheight) - (5)),(2),((- kinemagics.canvas_util.gheight) - (5)));
+kinemagics.canvas_util.triangle_BANG_.call(null,ctx,(0),((- kinemagics.canvas_util.gheight) - (5)),(-2),(- kinemagics.canvas_util.gheight),(2),(- kinemagics.canvas_util.gheight));
 
 kinemagics.canvas_util.move_to_BANG_.call(null,ctx,(0),(0));
 
