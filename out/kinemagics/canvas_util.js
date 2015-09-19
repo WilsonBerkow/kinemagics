@@ -134,6 +134,12 @@ kinemagics.canvas_util.fill_style_BANG_.call(null,ctx_front,"red");
 
 kinemagics.canvas_util.translate_BANG_.call(null,ctx_front,(0),kinemagics.canvas_util.gheight);
 
+kinemagics.canvas_util.translate_BANG_.call(null,ctx,0.5,0.5);
+
+kinemagics.canvas_util.translate_BANG_.call(null,ctx_mid,0.5,0.5);
+
+kinemagics.canvas_util.translate_BANG_.call(null,ctx_front,0.5,0.5);
+
 kinemagics.canvas_util.begin_BANG_.call(null,ctx);
 
 kinemagics.canvas_util.move_to_BANG_.call(null,ctx,(0),(kinemagics.canvas_util.gheight + (5)));

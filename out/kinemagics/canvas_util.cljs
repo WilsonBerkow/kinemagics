@@ -129,6 +129,10 @@
   (translate! ctx-mid 0 gheight)
   (fill-style! ctx-front "red")
   (translate! ctx-front 0 gheight)
+  ;; For crisper lines:
+  (translate! ctx 0.5 0.5)
+  (translate! ctx-mid 0.5 0.5)
+  (translate! ctx-front 0.5 0.5)
   (begin! ctx)
   (move-to! ctx 0 (+ gheight 5))
   (triangle! ctx
