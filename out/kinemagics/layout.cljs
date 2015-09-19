@@ -49,9 +49,19 @@
 (defn render-ball! [state]
   (let [x (* (:t state) config/main-graph-t-scale)
         y (:d state)]
-    (c/begin! ctx)
-    (c/circle! ctx x y 10)
-    (c/fill! ctx)
+    (if (and (< y 0) (= (:graph-used state) "15"))
+      (do
+       (c/save! ctx)
+       (c/translate! ctx x y)
+       (c/scale! ctx (max 1 (/ (- y) 6)) 1)
+       (c/begin! ctx)
+       (c/circle! ctx (/ y 2) 0 10)
+       (c/fill! ctx)
+       (c/restore! ctx))
+      (do
+        (c/begin! ctx)
+        (c/circle! ctx x y 10)
+        (c/fill! ctx)))
     (c/begin! ctx-back)
     (c/circle! ctx-back x y 1)
     (c/fill! ctx-back)))

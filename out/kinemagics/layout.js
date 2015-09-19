@@ -28,11 +28,30 @@ kinemagics.canvas_util.fill_style_BANG_.call(null,kinemagics.layout.ctx_back,"gr
 kinemagics.layout.render_ball_BANG_ = (function kinemagics$layout$render_ball_BANG_(state){
 var x = (new cljs.core.Keyword(null,"t","t",-1397832519).cljs$core$IFn$_invoke$arity$1(state) * kinemagics.config.main_graph_t_scale);
 var y = new cljs.core.Keyword(null,"d","d",1972142424).cljs$core$IFn$_invoke$arity$1(state);
+if(((y < (0))) && (cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"graph-used","graph-used",-1689796065).cljs$core$IFn$_invoke$arity$1(state),"15"))){
+kinemagics.canvas_util.save_BANG_.call(null,kinemagics.layout.ctx);
+
+kinemagics.canvas_util.translate_BANG_.call(null,kinemagics.layout.ctx,x,y);
+
+kinemagics.canvas_util.scale_BANG_.call(null,kinemagics.layout.ctx,(function (){var x__2857__auto__ = (1);
+var y__2858__auto__ = ((- y) / (6));
+return ((x__2857__auto__ > y__2858__auto__) ? x__2857__auto__ : y__2858__auto__);
+})(),(1));
+
+kinemagics.canvas_util.begin_BANG_.call(null,kinemagics.layout.ctx);
+
+kinemagics.canvas_util.circle_BANG_.call(null,kinemagics.layout.ctx,(y / (2)),(0),(10));
+
+kinemagics.canvas_util.fill_BANG_.call(null,kinemagics.layout.ctx);
+
+kinemagics.canvas_util.restore_BANG_.call(null,kinemagics.layout.ctx);
+} else {
 kinemagics.canvas_util.begin_BANG_.call(null,kinemagics.layout.ctx);
 
 kinemagics.canvas_util.circle_BANG_.call(null,kinemagics.layout.ctx,x,y,(10));
 
 kinemagics.canvas_util.fill_BANG_.call(null,kinemagics.layout.ctx);
+}
 
 kinemagics.canvas_util.begin_BANG_.call(null,kinemagics.layout.ctx_back);
 
