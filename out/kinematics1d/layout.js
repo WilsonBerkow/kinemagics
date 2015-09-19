@@ -5,7 +5,6 @@ goog.require('kinematics1d.runloop');
 goog.require('kinematics1d.canvas_util');
 goog.require('kinematics1d.velgraphs');
 goog.require('kinematics1d.config');
-cljs.core.enable_console_print_BANG_.call(null);
 kinematics1d.layout.fps = (40);
 kinematics1d.layout.framelength = ((1000) / kinematics1d.layout.fps);
 kinematics1d.layout.init_state = new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"d","d",1972142424),(0),new cljs.core.Keyword(null,"t","t",-1397832519),(0),new cljs.core.Keyword(null,"vel","vel",-110770822),(0),new cljs.core.Keyword(null,"dv","dv",781315158),(0),new cljs.core.Keyword(null,"prev","prev",-1597069226),new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"d","d",1972142424),(0),new cljs.core.Keyword(null,"t","t",-1397832519),(0),new cljs.core.Keyword(null,"dv","dv",781315158),(0),new cljs.core.Keyword(null,"vel","vel",-110770822),(0)], null)], null);

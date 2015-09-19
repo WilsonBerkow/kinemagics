@@ -4,8 +4,6 @@
             [kinematics1d.velgraphs :as velgraphs]
             [kinematics1d.config :as config]))
 
-(enable-console-print!)
-
 (def fps 40)
 
 (def framelength (/ 1000 fps))
