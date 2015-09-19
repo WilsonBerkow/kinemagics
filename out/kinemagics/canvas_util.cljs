@@ -11,6 +11,7 @@
 (defn get-ctx-height [ctx] (get-canv-height (.-canvas ctx)))
 
 (def canvas (by-id "canvas"))
+(def canvas-back (by-id "canvas-back"))
 (def width (get-canv-width canvas))
 (def height (get-canv-height canvas))
 
@@ -166,6 +167,12 @@
   (clear-graph-layer! v-graph-front)
   (clear-graph-layer! a-graph-mid)
   (clear-graph-layer! a-graph-front))
+
+(def clear-ball-back-canvas!
+  ;; Clear the trail left behind by the ball
+  (let [back-ctx (get-ctx canvas-back)]
+    (fn []
+      (.clearRect back-ctx 0 0 width height))))
 
 (defn point! [ctx x y r]
   (begin! ctx)

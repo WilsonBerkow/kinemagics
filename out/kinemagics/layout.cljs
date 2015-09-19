@@ -43,14 +43,18 @@
        :graph-used new-picked-graph})))
 
 (def ctx (c/get-ctx c/canvas))
+(def ctx-back (c/get-ctx c/canvas-back))
+(c/fill-style! ctx-back "gray")
 
 (defn render-ball! [state]
-  (c/begin! ctx)
-  (c/circle! ctx
-             (* (:t state) config/main-graph-t-scale)
-             (:d state)
-             10)
-  (c/fill! ctx))
+  (let [x (* (:t state) config/main-graph-t-scale)
+        y (:d state)]
+    (c/begin! ctx)
+    (c/circle! ctx x y 10)
+    (c/fill! ctx)
+    (c/begin! ctx-back)
+    (c/circle! ctx-back x y 1)
+    (c/fill! ctx-back)))
 
 (defn render-canvas! [state]
  (c/clear-all! ctx)
@@ -64,7 +68,8 @@
        dv (* 500 (:dv state))
        prev-dv (* 500 (:dv (:prev state)))]
    (if (not (= (:graph-used state) (:graph-used (:prev state))))
-     (c/clear-all-graph-points!))
+     (do (c/clear-all-graph-points!)
+         (c/clear-ball-back-canvas!)))
    (c/draw-graph-point! c/d-graph-mid c/d-graph-front t d prev-t prev-d)
    (c/draw-graph-point! c/v-graph-mid c/v-graph-front t vel prev-t prev-vel)
    (c/draw-graph-point! c/a-graph-mid c/a-graph-front t dv prev-t prev-dv)))

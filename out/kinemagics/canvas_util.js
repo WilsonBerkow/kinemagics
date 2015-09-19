@@ -22,6 +22,7 @@ kinemagics.canvas_util.get_ctx_height = (function kinemagics$canvas_util$get_ctx
 return kinemagics.canvas_util.get_canv_height.call(null,ctx.canvas);
 });
 kinemagics.canvas_util.canvas = kinemagics.canvas_util.by_id.call(null,"canvas");
+kinemagics.canvas_util.canvas_back = kinemagics.canvas_util.by_id.call(null,"canvas-back");
 kinemagics.canvas_util.width = kinemagics.canvas_util.get_canv_width.call(null,kinemagics.canvas_util.canvas);
 kinemagics.canvas_util.height = kinemagics.canvas_util.get_canv_height.call(null,kinemagics.canvas_util.canvas);
 kinemagics.canvas_util.wkst_presets_pulldown = kinemagics.canvas_util.by_id.call(null,"presets-pulldown");
@@ -182,6 +183,13 @@ kinemagics.canvas_util.clear_graph_layer_BANG_.call(null,kinemagics.canvas_util.
 
 return kinemagics.canvas_util.clear_graph_layer_BANG_.call(null,kinemagics.canvas_util.a_graph_front);
 });
+kinemagics.canvas_util.clear_ball_back_canvas_BANG_ = (function (){var back_ctx = kinemagics.canvas_util.get_ctx.call(null,kinemagics.canvas_util.canvas_back);
+return ((function (back_ctx){
+return (function (){
+return back_ctx.clearRect((0),(0),kinemagics.canvas_util.width,kinemagics.canvas_util.height);
+});
+;})(back_ctx))
+})();
 kinemagics.canvas_util.point_BANG_ = (function kinemagics$canvas_util$point_BANG_(ctx,x,y,r){
 kinemagics.canvas_util.begin_BANG_.call(null,ctx);
 

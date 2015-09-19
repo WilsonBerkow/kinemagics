@@ -23,12 +23,22 @@ return new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"d"
 }
 });
 kinemagics.layout.ctx = kinemagics.canvas_util.get_ctx.call(null,kinemagics.canvas_util.canvas);
+kinemagics.layout.ctx_back = kinemagics.canvas_util.get_ctx.call(null,kinemagics.canvas_util.canvas_back);
+kinemagics.canvas_util.fill_style_BANG_.call(null,kinemagics.layout.ctx_back,"gray");
 kinemagics.layout.render_ball_BANG_ = (function kinemagics$layout$render_ball_BANG_(state){
+var x = (new cljs.core.Keyword(null,"t","t",-1397832519).cljs$core$IFn$_invoke$arity$1(state) * kinemagics.config.main_graph_t_scale);
+var y = new cljs.core.Keyword(null,"d","d",1972142424).cljs$core$IFn$_invoke$arity$1(state);
 kinemagics.canvas_util.begin_BANG_.call(null,kinemagics.layout.ctx);
 
-kinemagics.canvas_util.circle_BANG_.call(null,kinemagics.layout.ctx,(new cljs.core.Keyword(null,"t","t",-1397832519).cljs$core$IFn$_invoke$arity$1(state) * kinemagics.config.main_graph_t_scale),new cljs.core.Keyword(null,"d","d",1972142424).cljs$core$IFn$_invoke$arity$1(state),(10));
+kinemagics.canvas_util.circle_BANG_.call(null,kinemagics.layout.ctx,x,y,(10));
 
-return kinemagics.canvas_util.fill_BANG_.call(null,kinemagics.layout.ctx);
+kinemagics.canvas_util.fill_BANG_.call(null,kinemagics.layout.ctx);
+
+kinemagics.canvas_util.begin_BANG_.call(null,kinemagics.layout.ctx_back);
+
+kinemagics.canvas_util.circle_BANG_.call(null,kinemagics.layout.ctx_back,x,y,(1));
+
+return kinemagics.canvas_util.fill_BANG_.call(null,kinemagics.layout.ctx_back);
 });
 kinemagics.layout.render_canvas_BANG_ = (function kinemagics$layout$render_canvas_BANG_(state){
 kinemagics.canvas_util.clear_all_BANG_.call(null,kinemagics.layout.ctx);
@@ -45,6 +55,8 @@ var dv = ((500) * new cljs.core.Keyword(null,"dv","dv",781315158).cljs$core$IFn$
 var prev_dv = ((500) * new cljs.core.Keyword(null,"dv","dv",781315158).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"prev","prev",-1597069226).cljs$core$IFn$_invoke$arity$1(state)));
 if(!(cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"graph-used","graph-used",-1689796065).cljs$core$IFn$_invoke$arity$1(state),new cljs.core.Keyword(null,"graph-used","graph-used",-1689796065).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"prev","prev",-1597069226).cljs$core$IFn$_invoke$arity$1(state))))){
 kinemagics.canvas_util.clear_all_graph_points_BANG_.call(null);
+
+kinemagics.canvas_util.clear_ball_back_canvas_BANG_.call(null);
 } else {
 }
 
