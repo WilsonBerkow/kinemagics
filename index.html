@@ -1,60 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <meta charset="utf-8" />
-    <style>
-        canvas {
-            border: 1px dashed grey;
-            padding: 5px;
-        }
-        #flex-container {
-            display: flex;
-            flex-direction: row;
-        }
-        #graphs-container {
-            flex: 0.65;
-            text-align: center;
-        }
-        #graphs-container > canvas {
-            display: inline-block;
-        }
-        #canvas-container {
-            flex: 0.35;
-        }
-        #name {
-            position: absolute;
-            font-style: italic;
-            font-size: 10px;
-            font-weight: normal;
-        }
-        #d-graph, #v-graph, #a-graph { position: absolute; z-index: -2; }
-        #d-graph-mid, #v-graph-mid, #a-graph-mid { position: absolute; z-index: -1; }
-    </style>
-  </head>
-  <body>
-    <h2>
-      Kinematics simulator
-      <br />
-      <span id="name">Wilson Berkow</span>
-    </h2>
-    <label style="font-size: 20px;"><input type="checkbox" id="paused" /> Pause?</label>
-    <div id="flex-container">
-      <div id="canvas-container">
-          <canvas id="canvas" width=400 height=443></canvas>
-      </div>
-      <div id="graphs-container">
-        <canvas id="d-graph" width=200 height=340></canvas>
-        <canvas id="d-graph-mid" width=200 height=340></canvas>
-        <canvas id="d-graph-front" width=200 height=340></canvas>
-        <canvas id="v-graph" width=200 height=340></canvas>
-        <canvas id="v-graph-mid" width=200 height=340></canvas>
-        <canvas id="v-graph-front" width=200 height=340></canvas>
-        <canvas id="a-graph-mid" width=200 height=340></canvas>
-        <canvas id="a-graph" width=200 height=340></canvas>
-        <canvas id="a-graph-front" width=200 height=340></canvas>
-      </div>
-    </div>
-    <script src="out/main.js"></script>
-  </body>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <style>
+            canvas {
+                border: 1px dashed grey;
+                padding: 5px;
+            }
+            #flex-container {
+                display: flex;
+                flex-direction: row;
+            }
+            #graphs-container {
+                flex: 0.65;
+                text-align: center;
+            }
+            #graphs-container > canvas {
+                display: inline-block;
+            }
+            #canvas-container {
+                flex: 0.35;
+            }
+            #name {
+                position: absolute;
+                font-style: italic;
+                font-size: 10px;
+                font-weight: normal;
+            }
+            #d-graph, #v-graph, #a-graph {
+                position: absolute;
+                z-index: -2;
+            }
+            #d-graph-mid, #v-graph-mid, #a-graph-mid {
+                position: absolute;
+                z-index: -1;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>
+            Kinematics simulator
+            <br />
+            <span id="name">Wilson Berkow</span>
+        </h2>
+        <label style="font-size: 20px;"><input type="checkbox" id="paused" /> Pause?</label>
+        <div id="flex-container">
+            <div id="canvas-container">
+                <canvas id="canvas" width=400 height=443></canvas>
+            </div>
+            <div id="graphs-container">
+                <canvas id="d-graph" width=200 height=340></canvas>
+                <canvas id="d-graph-mid" width=200 height=340></canvas>
+                <canvas id="d-graph-front" width=200 height=340></canvas>
+                <canvas id="v-graph" width=200 height=340></canvas>
+                <canvas id="v-graph-mid" width=200 height=340></canvas>
+                <canvas id="v-graph-front" width=200 height=340></canvas>
+                <canvas id="a-graph-mid" width=200 height=340></canvas>
+                <canvas id="a-graph" width=200 height=340></canvas>
+                <canvas id="a-graph-front" width=200 height=340></canvas>
+            </div>
+        </div>
+        <script src="out/main.js"></script>
+    </body>
 </html>
