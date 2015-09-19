@@ -48,13 +48,21 @@ kinematics1d.canvas_util.draw_graph_point_BANG_.call(null,kinematics1d.canvas_ut
 
 return kinematics1d.canvas_util.draw_graph_point_BANG_.call(null,kinematics1d.canvas_util.a_graph_mid,kinematics1d.canvas_util.a_graph_front,t,dv,prev_t,prev_dv);
 });
+kinematics1d.layout.paused_checkbox = kinematics1d.canvas_util.by_id.call(null,"paused");
+kinematics1d.layout.is_paused_QMARK_ = (function kinematics1d$layout$is_paused_QMARK_(){
+return kinematics1d.layout.paused_checkbox.checked;
+});
 kinematics1d.layout.init = (function kinematics1d$layout$init(){
 kinematics1d.layout.state = kinematics1d.layout.init_state;
 
 return kinematics1d.runloop.start_BANG_.call(null,kinematics1d.layout.framelength,(function (dt){
 kinematics1d.layout.render_canvas_BANG_.call(null,kinematics1d.layout.state);
 
+if(cljs.core.not.call(null,kinematics1d.layout.is_paused_QMARK_.call(null))){
 return kinematics1d.layout.state = kinematics1d.layout.step_state.call(null,dt,kinematics1d.layout.state);
+} else {
+return null;
+}
 }));
 });
 kinematics1d.canvas_util.setup_all_graphs_BANG_.call(null);

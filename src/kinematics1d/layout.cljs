@@ -60,11 +60,16 @@
    (c/draw-graph-point! c/v-graph-mid c/v-graph-front t vel prev-t prev-vel)
    (c/draw-graph-point! c/a-graph-mid c/a-graph-front t dv prev-t prev-dv)))
 
+(def paused-checkbox (c/by-id "paused"))
+(defn is-paused? []
+  (.-checked paused-checkbox))
+
 (defn init []
   (def state init-state)
   (runloop/start! framelength
     (fn [dt]
       (render-canvas! state)
-        (set! state (step-state dt state)))))
+      (if (not (is-paused?))
+          (set! state (step-state dt state))))))
 
 (c/setup-all-graphs!)

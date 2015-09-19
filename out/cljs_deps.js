@@ -1,7 +1,7 @@
 goog.addDependency("base.js", ['goog'], []);
 goog.addDependency("../cljs/core.js", ['cljs.core'], ['goog.string', 'goog.object', 'goog.string.StringBuffer', 'goog.array']);
-goog.addDependency("../kinematics1d/runloop.js", ['kinematics1d.runloop'], ['cljs.core']);
 goog.addDependency("../kinematics1d/config.js", ['kinematics1d.config'], ['cljs.core']);
+goog.addDependency("../kinematics1d/runloop.js", ['kinematics1d.runloop'], ['cljs.core']);
 goog.addDependency("../kinematics1d/canvas_util.js", ['kinematics1d.canvas_util'], ['cljs.core', 'kinematics1d.config']);
 goog.addDependency("../kinematics1d/velgraphs.js", ['kinematics1d.velgraphs'], ['cljs.core']);
 goog.addDependency("../clojure/browser/event.js", ['clojure.browser.event'], ['cljs.core', 'goog.events.EventTarget', 'goog.events.EventType', 'goog.events']);
