@@ -49,6 +49,7 @@ kinematics1d.canvas_util.draw_graph_point_BANG_.call(null,kinematics1d.canvas_ut
 return kinematics1d.canvas_util.draw_graph_point_BANG_.call(null,kinematics1d.canvas_util.a_graph_mid,kinematics1d.canvas_util.a_graph_front,t,dv,prev_t,prev_dv);
 });
 kinematics1d.layout.paused_checkbox = kinematics1d.canvas_util.by_id.call(null,"paused");
+kinematics1d.layout.paused_checkbox.checked = false;
 kinematics1d.layout.is_paused_QMARK_ = (function kinematics1d$layout$is_paused_QMARK_(){
 return kinematics1d.layout.paused_checkbox.checked;
 });

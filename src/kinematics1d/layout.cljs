@@ -61,6 +61,7 @@
    (c/draw-graph-point! c/a-graph-mid c/a-graph-front t dv prev-t prev-dv)))
 
 (def paused-checkbox (c/by-id "paused"))
+(set! (.-checked paused-checkbox) false)
 (defn is-paused? []
   (.-checked paused-checkbox))
 
