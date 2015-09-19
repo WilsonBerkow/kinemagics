@@ -13,7 +13,7 @@
    :t 0
    :vel 0
    :dv 0
-   :prev {:d 0 :t 0 :dv 0 :vel 0}
+   :prev {:d 0 :t 0 :dv 0 :vel 0 :graph-used "15"}
    :graph-used "15"})
 
 (defn step-state [dt state]
@@ -32,7 +32,7 @@
        :t 0
        :vel new-vel
        :dv 0
-       :prev prev
+       :prev init-state
        :graph-used new-picked-graph}
       ;; Otherwise, update state
       {:d (+ d (velgraphs/vel-from-time t new-picked-graph))

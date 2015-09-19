@@ -175,19 +175,23 @@
     (fn []
       (.clearRect back-ctx 0 0 width height))))
 
-(defn point! [ctx x y r]
-  (begin! ctx)
-  (circle! ctx x y r)
-  (fill! ctx))
-
 (defn draw-graph-point! [ctx-mid ctx-front time mag prev-time prev-mag]
   (let [x (* time (/ gwidth (/ width config/main-graph-t-scale)))
         y (* mag (/ gheight height))
         prev-x (* prev-time (/ gwidth (/ width config/main-graph-t-scale)))
         prev-y (* prev-mag (/ gheight height))]
+    ;; Draw red circle identifying current progress:
     (clear-graph-layer! ctx-front)
-    (point! ctx-front x y 3)
-    (point! ctx-mid prev-x prev-y 1)
+    (begin! ctx-front)
+    (circle! ctx-front x y 3)
+    (fill! ctx-front)
+    ;; Draw line connected previous point to current one:
+    (if (and (< prev-y 300) (< y 300)) ;; Because vx is bloated in first couple frame in acceleration graph
+      (do
+        (begin! ctx-mid)
+        (move-to! ctx-mid prev-x prev-y)
+        (line-to! ctx-mid x y)
+        (stroke! ctx-mid)))
     ))
 ;;
 

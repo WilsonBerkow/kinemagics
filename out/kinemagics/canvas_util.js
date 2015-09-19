@@ -192,13 +192,6 @@ return back_ctx.clearRect((0),(0),kinemagics.canvas_util.width,kinemagics.canvas
 });
 ;})(back_ctx))
 })();
-kinemagics.canvas_util.point_BANG_ = (function kinemagics$canvas_util$point_BANG_(ctx,x,y,r){
-kinemagics.canvas_util.begin_BANG_.call(null,ctx);
-
-kinemagics.canvas_util.circle_BANG_.call(null,ctx,x,y,r);
-
-return kinemagics.canvas_util.fill_BANG_.call(null,ctx);
-});
 kinemagics.canvas_util.draw_graph_point_BANG_ = (function kinemagics$canvas_util$draw_graph_point_BANG_(ctx_mid,ctx_front,time,mag,prev_time,prev_mag){
 var x = (time * (kinemagics.canvas_util.gwidth / (kinemagics.canvas_util.width / kinemagics.config.main_graph_t_scale)));
 var y = (mag * (kinemagics.canvas_util.gheight / kinemagics.canvas_util.height));
@@ -206,9 +199,23 @@ var prev_x = (prev_time * (kinemagics.canvas_util.gwidth / (kinemagics.canvas_ut
 var prev_y = (prev_mag * (kinemagics.canvas_util.gheight / kinemagics.canvas_util.height));
 kinemagics.canvas_util.clear_graph_layer_BANG_.call(null,ctx_front);
 
-kinemagics.canvas_util.point_BANG_.call(null,ctx_front,x,y,(3));
+kinemagics.canvas_util.begin_BANG_.call(null,ctx_front);
 
-return kinemagics.canvas_util.point_BANG_.call(null,ctx_mid,prev_x,prev_y,(1));
+kinemagics.canvas_util.circle_BANG_.call(null,ctx_front,x,y,(3));
+
+kinemagics.canvas_util.fill_BANG_.call(null,ctx_front);
+
+if(((prev_y < (300))) && ((y < (300)))){
+kinemagics.canvas_util.begin_BANG_.call(null,ctx_mid);
+
+kinemagics.canvas_util.move_to_BANG_.call(null,ctx_mid,prev_x,prev_y);
+
+kinemagics.canvas_util.line_to_BANG_.call(null,ctx_mid,x,y);
+
+return kinemagics.canvas_util.stroke_BANG_.call(null,ctx_mid);
+} else {
+return null;
+}
 });
 
 //# sourceMappingURL=canvas_util.js.map
