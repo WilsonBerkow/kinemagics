@@ -32,7 +32,7 @@
        :t 0
        :vel new-vel
        :dv 0
-       :prev init-state
+       :prev {:d 0 :t 0 :vel 0 :dv 0 :graph-used cur-used-graph}
        :graph-used new-picked-graph}
       ;; Otherwise, update state
       {:d (+ d (velgraphs/vel-from-time t new-picked-graph))
