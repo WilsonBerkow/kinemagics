@@ -64,15 +64,21 @@
     nil ;; In this case, the graph has run to its end, and the animation should restart
     ))
 
+(def diy-graph nil) ;; Set from layout.cljs
+
+(def diy-graph-active false)
+
 (defn vel-from-time [t graph-to-use]
   (vel-from-intervals t
-    (if (= graph-to-use "13")
-      wkst-graph-13
-      (if (= graph-to-use "14")
-        wkst-graph-14
-        (if (= graph-to-use "15")
-          wkst-graph-15
-          wkst-graph-16)))))
+    (if (or diy-graph-active (= graph-to-use "diy"))
+      diy-graph
+      (if (= graph-to-use "13")
+        wkst-graph-13
+        (if (= graph-to-use "14")
+          wkst-graph-14
+          (if (= graph-to-use "15")
+            wkst-graph-15
+            wkst-graph-16))))))
 
 
 

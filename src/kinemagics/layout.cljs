@@ -22,7 +22,7 @@
         d (:d state)
         new-vel (velgraphs/vel-from-time t cur-used-graph) ;; As all will be reset on graph change, no point in using new-picked-graph here
         dv (- new-vel (:vel state))
-        new-picked-graph (c/get-picked-graph)
+        new-picked-graph (if velgraphs/diy-graph-active "diy" (c/get-picked-graph))
         prev {:d d :t t :dv (:dv state) :vel (:vel state) :graph-used cur-used-graph}]
     (if (or (nil? new-vel) (not (= new-picked-graph cur-used-graph)))
       ;; If vel-from-time returns nil, it means the intervals have run.
@@ -88,3 +88,81 @@
           (set! state (step-state dt state))))))
 
 (c/setup-all-graphs!)
+
+;; HANDLING CUSTOM-DRAWN GRAPHS:
+;; I use a really ugly, naive approach here, because
+;; time constraints have made it impractical to spend
+;; the time necessary to learn core.async and the CLJS
+;; conventions before writing this
+(def user-drawing false)
+(def diy-btn (c/by-id "diy-btn"))
+(def diy-canvas (c/by-id "diy-canvas"))
+(def diy-ctx (c/get-ctx diy-canvas))
+
+(defn get-diy-canv-x []
+  (.-left (.getBoundingClientRect diy-canvas)))
+(defn get-diy-canv-y []
+  (.-top (.getBoundingClientRect diy-canvas)))
+
+(defn event-to-point-x [event]
+  (let [relx (- (.-clientX event) (get-diy-canv-x))]
+    (- relx 15)))
+(defn event-to-point-y [event]
+  (let [rely (- (.-clientY event) (get-diy-canv-y))]
+    (- c/gheight rely -15)))
+
+(defn vect-to-list-with-order [vect]
+  (conj (rest vect) (first vect)))
+
+(defn activate-created-graph [graph]
+  (set! velgraphs/diy-graph (vect-to-list-with-order graph))
+  (set! velgraphs/diy-graph-active true))
+
+(defn mk-drawing-click-handler []
+  (def last-click 0)
+  (def graph [])
+  (fn [event]
+    (let [user-x (event-to-point-x event)
+          user-y (event-to-point-y event)
+          x (if (empty? graph)
+              0 ;; First point must start at x=0
+              (max (first last-click) user-x))
+          y user-y]
+      (if (not (empty? graph))
+        (do
+          (c/begin! diy-ctx)
+          (c/move-to! diy-ctx (first last-click) (second last-click))
+          (c/line-to! diy-ctx x y)
+          (c/stroke! diy-ctx)))
+      (if (not (empty? (rest graph)))
+        (do
+          (set! (.-innerHTML (c/by-id "diy-activate-container"))
+            "<button id='activate-diy-graph'>Use this graph</button>")
+          (set! (.-onclick (c/by-id "activate-diy-graph"))
+            (fn []
+              (activate-created-graph graph)))))
+      (c/begin! diy-ctx)
+      (c/circle! diy-ctx x y 3)
+      (c/fill! diy-ctx)
+      (set! last-click [x y])
+      (set! graph
+        (conj graph
+              [(* 40 x)
+               (/ y 17)])))))
+(def dummy-ctx (c/get-ctx (js/document.createElement "canvas")))
+(set! (.-onclick diy-btn)
+  (fn []
+    (set! user-drawing true)
+    (set! (.-width diy-canvas) c/graphs-width)
+    (set! (.-height diy-canvas) c/graphs-height)
+    (c/setup-graph! diy-ctx dummy-ctx dummy-ctx "v" "Velocity")
+    (set! (.-onclick diy-canvas) (mk-drawing-click-handler))))
+
+(set! (.-onclick (c/by-id "presets-pulldown"))
+  (fn []
+    (set! velgraphs/diy-graph-active false)))
+
+
+
+
+
