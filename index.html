@@ -15,6 +15,18 @@
                 display: flex;
                 flex-direction: row;
             }
+            @media screen and (max-width: 1100px) {
+                #flex-container {
+                    display: flex;
+                    flex-direction: column;
+                }
+                #canvas-container {
+                    text-align: center;
+                }
+            }
+            .graph-holder {
+                display: inline-block;
+            }
             #graphs-container {
                 flex: 0.65;
                 text-align: center;
@@ -64,15 +76,21 @@
                 <canvas id="canvas" width=400 height=443></canvas>
             </div>
             <div id="graphs-container">
-                <canvas id="d-graph" width=200 height=340></canvas>
-                <canvas id="d-graph-mid" width=200 height=340></canvas>
-                <canvas id="d-graph-front" width=200 height=340></canvas>
-                <canvas id="v-graph" width=200 height=340></canvas>
-                <canvas id="v-graph-mid" width=200 height=340></canvas>
-                <canvas id="v-graph-front" width=200 height=340></canvas>
-                <canvas id="a-graph-mid" width=200 height=340></canvas>
-                <canvas id="a-graph" width=200 height=340></canvas>
-                <canvas id="a-graph-front" width=200 height=340></canvas>
+                <div class="graph-holder">
+                    <canvas id="d-graph" width=200 height=340></canvas>
+                    <canvas id="d-graph-mid" width=200 height=340></canvas>
+                    <canvas id="d-graph-front" width=200 height=340></canvas>
+                </div>
+                <div class="graph-holder">
+                    <canvas id="v-graph" width=200 height=340></canvas>
+                    <canvas id="v-graph-mid" width=200 height=340></canvas>
+                    <canvas id="v-graph-front" width=200 height=340></canvas>
+                </div>
+                <div class="graph-holder">
+                    <canvas id="a-graph-mid" width=200 height=340></canvas>
+                    <canvas id="a-graph" width=200 height=340></canvas>
+                    <canvas id="a-graph-front" width=200 height=340></canvas>
+                </div>
                 <div id="cusomizer">
                     <label style="font-size: 20px; font-weight: bold;"><input type="checkbox" id="paused" /> Pause?</label>
                     <div id="presets-container">
