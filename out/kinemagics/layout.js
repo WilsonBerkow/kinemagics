@@ -138,7 +138,7 @@ kinemagics.layout.graph = cljs.core.PersistentVector.EMPTY;
 return (function (event){
 var user_x = kinemagics.layout.event_to_point_x.call(null,event);
 var user_y = kinemagics.layout.event_to_point_y.call(null,event);
-var x = ((cljs.core.empty_QMARK_.call(null,kinemagics.layout.graph))?(0):(function (){var x__2857__auto__ = cljs.core.first.call(null,kinemagics.layout.last_click);
+var x = ((cljs.core.empty_QMARK_.call(null,kinemagics.layout.graph))?(0):(function (){var x__2857__auto__ = ((3) + cljs.core.first.call(null,kinemagics.layout.last_click));
 var y__2858__auto__ = user_x;
 return ((x__2857__auto__ > y__2858__auto__) ? x__2857__auto__ : y__2858__auto__);
 })());

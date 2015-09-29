@@ -136,7 +136,7 @@
           user-y (event-to-point-y event)
           x (if (empty? graph)
               0 ;; First point must start at x=0
-              (max (first last-click) user-x))
+              (max (+ 3 (first last-click)) user-x))
           y user-y]
       (if (not (empty? graph))
         (do
