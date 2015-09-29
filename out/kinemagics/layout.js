@@ -154,17 +154,6 @@ kinemagics.canvas_util.stroke_BANG_.call(null,kinemagics.layout.diy_ctx);
 } else {
 }
 
-if(!(cljs.core.empty_QMARK_.call(null,cljs.core.rest.call(null,kinemagics.layout.graph)))){
-kinemagics.canvas_util.by_id.call(null,"diy-activate-container").innerHTML = "<button id='activate-diy-graph'>Use this graph</button>";
-
-kinemagics.canvas_util.by_id.call(null,"activate-diy-graph").onclick = ((function (user_x,user_y,x,y){
-return (function (){
-return kinemagics.layout.activate_created_graph.call(null,kinemagics.layout.graph);
-});})(user_x,user_y,x,y))
-;
-} else {
-}
-
 kinemagics.canvas_util.begin_BANG_.call(null,kinemagics.layout.diy_ctx);
 
 kinemagics.canvas_util.circle_BANG_.call(null,kinemagics.layout.diy_ctx,x,y,(3));
@@ -173,7 +162,19 @@ kinemagics.canvas_util.fill_BANG_.call(null,kinemagics.layout.diy_ctx);
 
 kinemagics.layout.last_click = new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [x,y], null);
 
-return kinemagics.layout.graph = cljs.core.conj.call(null,kinemagics.layout.graph,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [((40) * x),(y / (17))], null));
+kinemagics.layout.graph = cljs.core.conj.call(null,kinemagics.layout.graph,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [((40) * x),(y / (17))], null));
+
+if((!(cljs.core.empty_QMARK_.call(null,cljs.core.rest.call(null,kinemagics.layout.graph)))) && (cljs.core.empty_QMARK_.call(null,cljs.core.rest.call(null,cljs.core.rest.call(null,kinemagics.layout.graph))))){
+kinemagics.canvas_util.by_id.call(null,"diy-activate-container").innerHTML = "<button id='activate-diy-graph'>Use this graph</button>";
+
+return kinemagics.canvas_util.by_id.call(null,"activate-diy-graph").onclick = ((function (user_x,user_y,x,y){
+return (function (){
+return kinemagics.layout.activate_created_graph.call(null,kinemagics.layout.graph);
+});})(user_x,user_y,x,y))
+;
+} else {
+return null;
+}
 });
 });
 kinemagics.layout.dummy_ctx = kinemagics.canvas_util.get_ctx.call(null,document.createElement("canvas"));

@@ -144,13 +144,6 @@
           (c/move-to! diy-ctx (first last-click) (second last-click))
           (c/line-to! diy-ctx x y)
           (c/stroke! diy-ctx)))
-      (if (not (empty? (rest graph)))
-        (do
-          (set! (.-innerHTML (c/by-id "diy-activate-container"))
-            "<button id='activate-diy-graph'>Use this graph</button>")
-          (set! (.-onclick (c/by-id "activate-diy-graph"))
-            (fn []
-              (activate-created-graph graph)))))
       (c/begin! diy-ctx)
       (c/circle! diy-ctx x y 3)
       (c/fill! diy-ctx)
@@ -158,7 +151,16 @@
       (set! graph
         (conj graph
               [(* 40 x)
-               (/ y 17)])))))
+               (/ y 17)]))
+      (if (and (not (empty? (rest graph))) (empty? (rest (rest graph))))
+        ;; When the second point is added, add the chrome to let the
+        ;; user use the graph:
+        (do
+          (set! (.-innerHTML (c/by-id "diy-activate-container"))
+            "<button id='activate-diy-graph'>Use this graph</button>")
+          (set! (.-onclick (c/by-id "activate-diy-graph"))
+            (fn []
+              (activate-created-graph graph))))))))
 (def dummy-ctx (c/get-ctx (js/document.createElement "canvas")))
 (set! (.-onclick diy-btn)
   (fn []
