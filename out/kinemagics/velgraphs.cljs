@@ -70,7 +70,7 @@
 
 (defn vel-from-time [t graph-to-use]
   (vel-from-intervals t
-    (if (or diy-graph-active (= graph-to-use "diy"))
+    (if diy-graph-active
       diy-graph
       (if (= graph-to-use "13")
         wkst-graph-13

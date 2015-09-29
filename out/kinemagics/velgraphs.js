@@ -47,13 +47,7 @@ return null;
 kinemagics.velgraphs.diy_graph = null;
 kinemagics.velgraphs.diy_graph_active = false;
 kinemagics.velgraphs.vel_from_time = (function kinemagics$velgraphs$vel_from_time(t,graph_to_use){
-return kinemagics.velgraphs.vel_from_intervals.call(null,t,(cljs.core.truth_((function (){var or__2789__auto__ = kinemagics.velgraphs.diy_graph_active;
-if(cljs.core.truth_(or__2789__auto__)){
-return or__2789__auto__;
-} else {
-return cljs.core._EQ_.call(null,graph_to_use,"diy");
-}
-})())?kinemagics.velgraphs.diy_graph:((cljs.core._EQ_.call(null,graph_to_use,"13"))?kinemagics.velgraphs.wkst_graph_13:((cljs.core._EQ_.call(null,graph_to_use,"14"))?kinemagics.velgraphs.wkst_graph_14:((cljs.core._EQ_.call(null,graph_to_use,"15"))?kinemagics.velgraphs.wkst_graph_15:kinemagics.velgraphs.wkst_graph_16)))));
+return kinemagics.velgraphs.vel_from_intervals.call(null,t,(cljs.core.truth_(kinemagics.velgraphs.diy_graph_active)?kinemagics.velgraphs.diy_graph:((cljs.core._EQ_.call(null,graph_to_use,"13"))?kinemagics.velgraphs.wkst_graph_13:((cljs.core._EQ_.call(null,graph_to_use,"14"))?kinemagics.velgraphs.wkst_graph_14:((cljs.core._EQ_.call(null,graph_to_use,"15"))?kinemagics.velgraphs.wkst_graph_15:kinemagics.velgraphs.wkst_graph_16)))));
 });
 
 //# sourceMappingURL=velgraphs.js.map
