@@ -22,7 +22,7 @@
         d (:d state)
         new-vel (velgraphs/vel-from-time t cur-used-graph) ;; As all will be reset on graph change, no point in using new-picked-graph here
         dv (- new-vel (:vel state))
-        new-picked-graph (if velgraphs/diy-graph-active "diy" (c/get-picked-graph))
+        new-picked-graph (if velgraphs/diy-graph-active velgraphs/diy-graph (c/get-picked-graph))
         prev {:d d :t t :dv (:dv state) :vel (:vel state) :graph-used cur-used-graph}]
     (if (or (nil? new-vel) (not (= new-picked-graph cur-used-graph)))
       ;; If vel-from-time returns nil, it means the intervals have run.
