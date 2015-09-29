@@ -178,7 +178,7 @@ kinemagics.canvas_util.setup_graph_BANG_.call(null,kinemagics.canvas_util.v_grap
 return kinemagics.canvas_util.setup_graph_BANG_.call(null,kinemagics.canvas_util.a_graph,kinemagics.canvas_util.a_graph_mid,kinemagics.canvas_util.a_graph_front,"a","Acceleration");
 });
 kinemagics.canvas_util.clear_graph_layer_BANG_ = (function kinemagics$canvas_util$clear_graph_layer_BANG_(ctx){
-return kinemagics.canvas_util.clear_rect_BANG_.call(null,ctx,(-10),kinemagics.canvas_util.gheight,((2) * kinemagics.canvas_util.graphs_width),((2) * kinemagics.canvas_util.graphs_height));
+return kinemagics.canvas_util.clear_rect_BANG_.call(null,ctx,(-0.5 * kinemagics.canvas_util.graphs_width),(0.5 * kinemagics.canvas_util.graphs_height),((2) * kinemagics.canvas_util.graphs_width),((2) * kinemagics.canvas_util.graphs_height));
 });
 kinemagics.canvas_util.clear_all_graph_points_BANG_ = (function kinemagics$canvas_util$clear_all_graph_points_BANG_(){
 kinemagics.canvas_util.clear_graph_layer_BANG_.call(null,kinemagics.canvas_util.d_graph_mid);

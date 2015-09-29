@@ -164,7 +164,7 @@
   (setup-graph! a-graph a-graph-mid a-graph-front "a" "Acceleration"))
 
 (defn clear-graph-layer! [ctx]
-  (clear-rect! ctx -10 gheight (* 2 graphs-width) (* 2 graphs-height)))
+  (clear-rect! ctx (* -0.5 graphs-width) (* 0.5 graphs-height) (* 2 graphs-width) (* 2 graphs-height)))
 
 (defn clear-all-graph-points! []
   (clear-graph-layer! d-graph-mid)
