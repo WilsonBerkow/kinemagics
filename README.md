@@ -9,3 +9,5 @@ movement change over time.
 Although it's based on a physics class, I did this mostly just for the
 fun of it&mdash;to get a chance to work with Clojure and build a
 useful study tool.
+
+Use it at [wilsonberkow.com/kinemagics/](http://wilsonberkow.com/kinemagics/).
